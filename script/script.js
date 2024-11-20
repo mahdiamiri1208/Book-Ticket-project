@@ -7,21 +7,17 @@ let cityObj = {
 }
 
 countrySelect.addEventListener('change', function(){
-    switch(countrySelect.value){
-        case 'Iran':
-            updateCityOption(cityObj['Iran'])
-        break
-        case 'Canada':
-            updateCityOption(cityObj['Canada'])
-        break
-        case 'England':
-            updateCityOption(cityObj['England'])
-        break
+    let mainCountry = countrySelect.value
+    if(mainCountry === 'Please Select'){
+        citySelect.innerHTML = '<option value="">Select City ...</option>'
+    }
+    else{
+        updateCityOption(cityObj[mainCountry])
     }
 })
 
 function updateCityOption(cities){
-    citySelect.textContent = '<option value="">Select City ...</option>'
+    citySelect.innerHTML = ''
     cities.forEach(function(city){
         let option = document.createElement('option')
         option.value = city
